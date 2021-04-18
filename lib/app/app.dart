@@ -11,6 +11,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: primaryColor,
         accentColor: accentColor,
+        fontFamily: 'MesloLGS',
       ),
       home: HomePage(),
     );
