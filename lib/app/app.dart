@@ -1,7 +1,6 @@
+import 'package:final_space/app/route_generator.dart';
 import 'package:final_space/app/shared/colors.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/home/home_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -13,7 +12,8 @@ class App extends StatelessWidget {
         accentColor: accentColor,
         fontFamily: 'MesloLGS',
       ),
-      home: HomePage(),
+      initialRoute: RouteGenerator.initialRoute,
+      routes: RouteGenerator.routes,
     );
   }
 }
