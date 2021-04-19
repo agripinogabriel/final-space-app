@@ -40,23 +40,23 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(height: 12),
                         _buildSectionwidget(
                           image: "assets/images/mooncake.png",
-                          title: "Characters",
+                          text: "Characters",
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
                             image: "assets/images/avocato.png",
-                            title: "Episodes",
-                            imageSide: ImageSide.left),
+                            text: "Episodes",
+                            imageSide: _ImageSide.left),
                         SizedBox(height: 6),
                         _buildSectionwidget(
                           image: "assets/images/gary.png",
-                          title: "Locations",
+                          text: "Locations",
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
                             image: "assets/images/lord-commander.png",
-                            title: "Quotes",
-                            imageSide: ImageSide.left),
+                            text: "Quotes",
+                            imageSide: _ImageSide.left),
                       ],
                     ),
                   ),
@@ -71,45 +71,48 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildSectionwidget({
     required String image,
-    required String title,
-    ImageSide imageSide = ImageSide.right,
+    required String text,
+    _ImageSide imageSide = _ImageSide.right,
   }) {
     return Card(
       elevation: 6,
       color: secondaryColor.withAlpha(40),
       child: Row(
         children: [
-          if (imageSide == ImageSide.left)
-            Image.asset(
-              image,
-              height: 90,
-            ),
+          if (imageSide == _ImageSide.left) _characterImage(image),
           Spacer(),
-          Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: secondaryColor,
-              shadows: [
-                Shadow(
-                  blurRadius: 5,
-                  color: Colors.black87,
-                  offset: Offset(6, 6),
-                ),
-              ],
-              fontSize: 36,
-            ),
-          ),
+          _bigTextWithShadow(text),
           Spacer(),
-          if (imageSide == ImageSide.right)
-            Image.asset(
-              image,
-              height: 90,
-            ),
+          if (imageSide == _ImageSide.right) _characterImage(image),
         ],
+      ),
+    );
+  }
+
+  Image _characterImage(String image) {
+    return Image.asset(
+      image,
+      height: 90,
+    );
+  }
+
+  Text _bigTextWithShadow(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: secondaryColor,
+        shadows: [
+          Shadow(
+            blurRadius: 5,
+            color: Colors.black87,
+            offset: Offset(6, 6),
+          ),
+        ],
+        fontSize: 36,
       ),
     );
   }
 }
 
-enum ImageSide { left, right }
+enum _ImageSide { left, right }
