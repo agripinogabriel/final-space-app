@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildSectionwidget({
-    @required String image,
-    @required String title,
+    required String image,
+    required String title,
     ImageSide imageSide = ImageSide.right,
   }) {
     return Card(
