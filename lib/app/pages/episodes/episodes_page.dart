@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
+import '../../shared/mock/episodes.dart';
 
 class EpisodesPage extends StatefulWidget {
   @override
@@ -30,9 +31,17 @@ class _EpisodesPageState extends State<EpisodesPage> {
               ),
             ),
           ),
+          ListView.builder(
+            itemCount: EPISODES.length,
+            itemBuilder: _buildListItem,
+            padding: const EdgeInsets.all(12),
+          ),
         ],
       ),
     );
   }
 
+  Widget _buildListItem(BuildContext context, int index) {
+    return Container();
+  }
 }
