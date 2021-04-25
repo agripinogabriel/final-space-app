@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
+import '../../shared/mock/characters.dart';
 import '../../shared/mock/episodes.dart';
 import '../../shared/widget/shadowed_text.dart';
 
@@ -54,6 +55,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
           children: [
             _buildEpisodeFolder(episode),
             _buildEpisodeStaff(episode),
+            _buildCharacters(episode["characters"] as List),
           ],
         ),
       ),
@@ -141,5 +143,31 @@ class _EpisodesPageState extends State<EpisodesPage> {
         ),
       ],
     );
+  }
+
+  Widget _buildCharacters(List characters) {
+    return GridView.count(
+      padding: const EdgeInsets.all(8),
+      crossAxisCount: 11,
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 8,
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      children: characters
+          .map(
+            (id) => ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              child: Image.network(
+                _getCharacterImageUrlById(id),
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  String _getCharacterImageUrlById(int id) {
+    final character = CHARACTERS.firstWhere((map) => map["id"] == id);
+    return character["img_url"] as String;
   }
 }
