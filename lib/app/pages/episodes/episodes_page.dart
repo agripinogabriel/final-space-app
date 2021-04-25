@@ -4,6 +4,7 @@ import '../../shared/colors.dart';
 import '../../shared/mock/characters.dart';
 import '../../shared/mock/episodes.dart';
 import '../../shared/widget/shadowed_text.dart';
+import '../characters/character_widget.dart';
 
 class EpisodesPage extends StatefulWidget {
   @override
@@ -166,8 +167,13 @@ class _EpisodesPageState extends State<EpisodesPage> {
     );
   }
 
-  String _getCharacterImageUrlById(int id) {
+  Map<String, Object> _getCharacter({required int id}) {
     final character = CHARACTERS.firstWhere((map) => map["id"] == id);
+    return character;
+  }
+
+  String _getCharacterImageUrlById(int id) {
+    final character = _getCharacter(id: id);
     return character["img_url"] as String;
   }
 }
