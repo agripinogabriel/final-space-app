@@ -1,6 +1,7 @@
-import 'package:final_space/app/shared/colors.dart';
-import 'package:final_space/app/shared/widget/shadowed_text.dart';
 import 'package:flutter/material.dart';
+
+import '../../shared/colors.dart';
+import '../../shared/widget/shadowed_text.dart';
 
 class Character extends StatelessWidget {
   final Map<String, dynamic> character;

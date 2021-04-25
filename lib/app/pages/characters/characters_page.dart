@@ -1,9 +1,8 @@
-import 'package:final_space/app/route_generator.dart';
-import 'package:final_space/app/shared/mock/characters.dart';
-import 'package:final_space/app/shared/widget/shadowed_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
+import '../../shared/mock/characters.dart';
+import '../../shared/widget/shadowed_text.dart';
 import 'character_widget.dart';
 
 class CharactersPage extends StatefulWidget {

@@ -1,5 +1,6 @@
-import 'package:final_space/app/shared/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../shared/colors.dart';
 
 class HomePage extends StatefulWidget {
   @override

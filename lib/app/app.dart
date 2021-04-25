@@ -1,6 +1,7 @@
-import 'package:final_space/app/route_generator.dart';
-import 'package:final_space/app/shared/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'route_generator.dart';
+import 'shared/colors.dart';
 
 class App extends StatelessWidget {
   @override
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
         bottomSheetTheme: BottomSheetThemeData(
           backgroundColor: secondaryLigthColor.withAlpha(40),
         ),
+        splashFactory: null,
       ),
       initialRoute: RouteGenerator.initialRoute,
       // routes: RouteGenerator.routes,
