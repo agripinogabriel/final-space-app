@@ -4,17 +4,20 @@ class ShadowedText extends StatelessWidget {
   final String text;
   final double fontSize;
   final int? maxLines;
+  final TextAlign? textAlign;
 
   const ShadowedText(
     this.text,
     this.fontSize, {
     this.maxLines,
+    this.textAlign
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       maxLines: maxLines,
       style: TextStyle(
         fontWeight: FontWeight.bold,
