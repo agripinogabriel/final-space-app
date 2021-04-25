@@ -156,10 +156,18 @@ class _EpisodesPageState extends State<EpisodesPage> {
       shrinkWrap: true,
       children: characters
           .map(
-            (id) => ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: Image.network(
-                _getCharacterImageUrlById(id),
+            (id) => InkWell(
+              onTap: () => showModalBottomSheet(
+                context: context,
+                builder: (_) => Character(
+                  _getCharacter(id: id),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                child: Image.network(
+                  _getCharacterImageUrlById(id),
+                ),
               ),
             ),
           )
