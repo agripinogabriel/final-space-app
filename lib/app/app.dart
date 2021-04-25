@@ -13,7 +13,8 @@ class App extends StatelessWidget {
         fontFamily: 'MesloLGS',
       ),
       initialRoute: RouteGenerator.initialRoute,
-      routes: RouteGenerator.routes,
+      // routes: RouteGenerator.routes,
+      onGenerateRoute: RouteGenerator.onGenerateRoute,
     );
   }
 }

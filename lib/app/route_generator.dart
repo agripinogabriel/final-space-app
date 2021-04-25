@@ -1,12 +1,30 @@
-import 'package:final_space/app/pages/home/home_page.dart';
+
 import 'package:flutter/material.dart';
 
-class RouteGenerator {
-  static final initialRoute = "/";
+import 'pages/characters/characters_page.dart';
+import 'pages/home/home_page.dart';
 
-  static get routes {
+class RouteGenerator {
+  static const initialRoute = "/";
+  static const characters = "/character";
+  static const character = "/character/:id";
+
+  static Map<String, Widget Function(BuildContext)> get routes {
     return {
-      initialRoute: (BuildContext context) => HomePage(),
+      initialRoute: (context) => HomePage(),
+      characters: (context) => CharactersPage(),
+      // character: (context) => CharacterPage(settings.arguments),
     };
+  }
+
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    final Map<String, WidgetBuilder> _routes = {
+      initialRoute: (context) => HomePage(),
+      characters: (context) => CharactersPage()
+    };
+
+    WidgetBuilder? builder = _routes[settings.name];
+    if (builder == null) return null;
+    return MaterialPageRoute(builder: (ctx) => builder(ctx));
   }
 }
