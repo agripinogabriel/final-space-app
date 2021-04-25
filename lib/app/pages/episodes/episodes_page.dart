@@ -66,10 +66,31 @@ class _EpisodesPageState extends State<EpisodesPage> {
   Widget _buildEpisodeFolder(Map<String, Object> episode) {
     return Stack(
       children: [
-        Image.network(episode["img_url"] as String),
+        _buildEpisodeFolderImage(episode["img_url"] as String),
         _buildEpisodeName(episode),
         _buildEpisodeDate(episode),
       ],
+    );
+  }
+
+  Widget _buildEpisodeFolderImage(String imgUrl) {
+    return Image.network(
+      imgUrl,
+      loadingBuilder: (BuildContext context, Widget widget,
+          ImageChunkEvent? imageChunckEvent) {
+        if (imageChunckEvent == null) return widget;
+        return SizedBox(
+          height: 250,
+          child: Center(
+            child: CircularProgressIndicator(
+              value: imageChunckEvent.expectedTotalBytes != null
+                  ? imageChunckEvent.cumulativeBytesLoaded /
+                      imageChunckEvent.expectedTotalBytes!
+                  : null,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -167,6 +188,18 @@ class _EpisodesPageState extends State<EpisodesPage> {
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 child: Image.network(
                   _getCharacterImageUrlById(id),
+                  loadingBuilder: (BuildContext context, Widget widget,
+                      ImageChunkEvent? imageChunckEvent) {
+                    if (imageChunckEvent == null) return widget;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: imageChunckEvent.expectedTotalBytes != null
+                            ? imageChunckEvent.cumulativeBytesLoaded /
+                                imageChunckEvent.expectedTotalBytes!
+                            : null,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
