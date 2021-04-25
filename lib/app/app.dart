@@ -11,6 +11,9 @@ class App extends StatelessWidget {
         primarySwatch: primaryColor,
         accentColor: accentColor,
         fontFamily: 'MesloLGS',
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: secondaryLigthColor.withAlpha(40),
+        ),
       ),
       initialRoute: RouteGenerator.initialRoute,
       // routes: RouteGenerator.routes,
