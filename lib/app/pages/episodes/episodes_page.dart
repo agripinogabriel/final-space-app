@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/mock/episodes.dart';
+import '../../shared/widget/shadowed_text.dart';
 
 class EpisodesPage extends StatefulWidget {
   @override
@@ -42,6 +43,49 @@ class _EpisodesPageState extends State<EpisodesPage> {
   }
 
   Widget _buildListItem(BuildContext context, int index) {
-    return Container();
+    final episode = EPISODES[index];
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(2.0),
+        color: secondaryLigthColor.withAlpha(40),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Image.network(episode["img_url"] as String),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    color: Colors.black87.withAlpha(120),
+                    child: ShadowedText(
+                      episode["name"] as String,
+                      22,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    color: Colors.black87.withAlpha(120),
+                    child: ShadowedText(
+                      episode["air_date"] as String,
+                      16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
