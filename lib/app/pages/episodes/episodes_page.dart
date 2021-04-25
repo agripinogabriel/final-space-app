@@ -53,6 +53,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
         child: Column(
           children: [
             _buildEpisodeFolder(episode),
+            _buildEpisodeStaff(episode),
           ],
         ),
       ),
@@ -98,6 +99,47 @@ class _EpisodesPageState extends State<EpisodesPage> {
           textAlign: TextAlign.center,
         ),
       ),
+    );
+  }
+
+  Widget _buildEpisodeStaff(Map<String, Object> episode) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  ShadowedText(
+                    "Director: ${episode["director"] as String}",
+                    16,
+                    textAlign: TextAlign.center,
+                  ),
+                  Spacer(),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  ShadowedText(
+                    "Writer: ${episode["writer"] as String}",
+                    16,
+                    textAlign: TextAlign.center,
+                  ),
+                  Spacer(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
