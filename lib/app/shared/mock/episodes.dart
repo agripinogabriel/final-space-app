@@ -5,7 +5,7 @@ const EPISODES = [
     "air_date": "02/15/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "2", "3", "5", "6", "9", "11"],
+    "characters": [1, 2, 3, 5, 6, 9, 11],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter1.jpg"
   },
   {
@@ -14,7 +14,7 @@ const EPISODES = [
     "air_date": "02/15/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "2", "3", "4", "5", "6", "9", "10", "12", "14"],
+    "characters": [1, 2, 3, 4, 5, 6, 9, 10, 12, 14],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter2.jpg"
   },
   {
@@ -23,7 +23,7 @@ const EPISODES = [
     "air_date": "02/26/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "5", "6", "9", "11", "14"],
+    "characters": [1, 3, 4, 5, 6, 9, 11, 14],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter3.jpg"
   },
   {
@@ -32,7 +32,7 @@ const EPISODES = [
     "air_date": "03/19/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "6", "5", "9", "15", "11"],
+    "characters": [1, 3, 4, 6, 5, 9, 15, 11],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter4.jpg"
   },
   {
@@ -41,7 +41,7 @@ const EPISODES = [
     "air_date": "03/19/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "5", "6", "9", "11", "14"],
+    "characters": [1, 3, 4, 5, 6, 9, 11, 14],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter5.jpg"
   },
   {
@@ -50,7 +50,7 @@ const EPISODES = [
     "air_date": "03/26/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "5", "6", "9", "11"],
+    "characters": [1, 3, 4, 5, 6, 9, 11],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter6.jpg"
   },
   {
@@ -59,7 +59,7 @@ const EPISODES = [
     "air_date": "04/09/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "6", "9", "12"],
+    "characters": [1, 3, 4, 6, 9, 12],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter7.jpg"
   },
   {
@@ -68,7 +68,7 @@ const EPISODES = [
     "air_date": "04/16/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "6", "9", "11", "12", "15", "18"],
+    "characters": [1, 3, 4, 6, 9, 11, 12, 15, 18],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter8.jpg"
   },
   {
@@ -77,7 +77,7 @@ const EPISODES = [
     "air_date": "04/23/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "6", "9", "11", "14", "22"],
+    "characters": [1, 3, 4, 6, 9, 11, 14, 22],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter9.jpg"
   },
   {
@@ -86,7 +86,7 @@ const EPISODES = [
     "air_date": "04/30/2018",
     "director": "Mike Roberts",
     "writer": "Olan Rogers",
-    "characters": ["1", "3", "4", "6", "9", "11", "14", "15", "22"],
+    "characters": [1, 3, 4, 6, 9, 11, 14, 15, 22],
     "img_url": "https://finalspaceapi.com/api/episode/image/chapter10.jpg"
   },
   {
@@ -95,8 +95,9 @@ const EPISODES = [
     "air_date": "06/22/2019",
     "director": "Ben Bjelajac",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13"],
-    "img_url": "https://finalspaceapi.com/api/episode/image/the_toro_regatta.jpg"
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13],
+    "img_url":
+        "https://finalspaceapi.com/api/episode/image/the_toro_regatta.jpg"
   },
   {
     "id": 12,
@@ -104,7 +105,7 @@ const EPISODES = [
     "air_date": "06/22/2019",
     "director": "Yoriaki Mochizuki",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "12", "13"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 12, 13],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_happy_place.jpg"
   },
   {
@@ -113,7 +114,7 @@ const EPISODES = [
     "air_date": "07/08/2019",
     "director": "Anne Walker Farrell",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "12", "13"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 12, 13],
     "img_url":
         "https://finalspaceapi.com/api/episode/image/the_grand_surrender.jpg"
   },
@@ -123,7 +124,7 @@ const EPISODES = [
     "air_date": "06/15/2019",
     "director": "Ben Bjelajac",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_other_side.jpg"
   },
   {
@@ -132,7 +133,7 @@ const EPISODES = [
     "air_date": "06/22/2019",
     "director": "Yoriaki Mochizuki",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13", "16"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13, 16],
     "img_url":
         "https://finalspaceapi.com/api/episode/image/the_notorious_mrs_goodspeed.jpg"
   },
@@ -142,8 +143,9 @@ const EPISODES = [
     "air_date": "06/29/2019",
     "director": "Anne Walker Farrell",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13", "18"],
-    "img_url": "https://finalspaceapi.com/api/episode/image/the_arachnitects.jpg"
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13, 18],
+    "img_url":
+        "https://finalspaceapi.com/api/episode/image/the_arachnitects.jpg"
   },
   {
     "id": 17,
@@ -151,7 +153,7 @@ const EPISODES = [
     "air_date": "07/05/2019",
     "director": "Olan Rogers",
     "writer": "Ben Bjelajac",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "12", "13"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 12, 13],
     "img_url":
         "https://finalspaceapi.com/api/episode/image/the_first_times_they_met.jpg"
   },
@@ -161,7 +163,7 @@ const EPISODES = [
     "air_date": "07/12/2019",
     "director": "Olan Rogers",
     "writer": "Yoriaki Mochizuki",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_remembered.jpg"
   },
   {
@@ -170,7 +172,7 @@ const EPISODES = [
     "air_date": "07/19/2019",
     "director": "Ben Bjelajac",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "11", "12", "13", "22"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 11, 12, 13, 22],
     "img_url":
         "https://finalspaceapi.com/api/episode/image/the_closer_you_get.jpg"
   },
@@ -180,7 +182,7 @@ const EPISODES = [
     "air_date": "07/26/2019",
     "director": "Anne Walker Farrell",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "12", "13", "15", "16"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 12, 13, 15, 16],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_lost_spy.jpg"
   },
   {
@@ -189,7 +191,7 @@ const EPISODES = [
     "air_date": "08/09/2019",
     "director": "Anne Walker Farrell",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "10", "12", "13", "16"],
+    "characters": [1, 4, 6, 7, 8, 9, 10, 12, 13, 16],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_set_up.jpg"
   },
   {
@@ -198,7 +200,7 @@ const EPISODES = [
     "air_date": "08/16/2019",
     "director": "Yoriaki Mochizuki",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "6", "7", "8", "9", "12", "13", "16", "17"],
+    "characters": [1, 4, 6, 7, 8, 9, 12, 13, 16, 17],
     "img_url":
         "https://finalspaceapi.com/api/episode/image/the_descent_into_darkness.jpg"
   },
@@ -208,7 +210,7 @@ const EPISODES = [
     "air_date": "08/23/2019",
     "director": "Yoriaki Mochizuki",
     "writer": "Olan Rogers",
-    "characters": ["1", "4", "5", "6", "7", "8", "9", "12", "13", "16"],
+    "characters": [1, 4, 5, 6, 7, 8, 9, 12, 13, 16],
     "img_url": "https://finalspaceapi.com/api/episode/image/the_sixth_key.jpg"
   }
 ];
