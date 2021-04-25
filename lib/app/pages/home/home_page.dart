@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../route_generator.dart';
 import '../../shared/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                           text: "Characters",
                           tag: "character-hero",
                           callback: () =>
-                              Navigator.of(context).pushNamed("/character"),
+                              Navigator.of(context).pushNamed(RouteGenerator.characters),
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
