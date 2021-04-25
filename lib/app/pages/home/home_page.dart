@@ -45,8 +45,8 @@ class _HomePageState extends State<HomePage> {
                           image: "assets/images/mooncake.png",
                           text: "Characters",
                           tag: "character-hero",
-                          callback: () =>
-                              Navigator.of(context).pushNamed(RouteGenerator.characters),
+                          callback: () => Navigator.of(context)
+                              .pushNamed(RouteGenerator.characters),
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
@@ -54,7 +54,8 @@ class _HomePageState extends State<HomePage> {
                           text: "Episodes",
                           tag: "episodes-hero",
                           imageSide: _ImageSide.left,
-                          callback: () {},
+                          callback: () => Navigator.of(context)
+                              .pushNamed(RouteGenerator.episodes),
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
