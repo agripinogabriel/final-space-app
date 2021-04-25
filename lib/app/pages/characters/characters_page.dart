@@ -85,19 +85,19 @@ class _CharactersPageState extends State<CharactersPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ShadowedTex(
+        ShadowedText(
           "Name: ${character["name"] as String? ?? "Unknown"}",
           16,
           maxLines: 1,
         ),
         SizedBox(height: 4),
-        ShadowedTex(
+        ShadowedText(
           "Species: ${character["species"] as String? ?? "Unknown"}",
           16,
           maxLines: 1,
         ),
         SizedBox(height: 4),
-        ShadowedTex(
+        ShadowedText(
           "Status: ${character["status"] as String? ?? "Unknown"}",
           16,
           maxLines: 1,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ShadowedTex extends StatelessWidget {
+class ShadowedText extends StatelessWidget {
   final String text;
   final double fontSize;
   final int? maxLines;
 
-  const ShadowedTex(
+  const ShadowedText(
     this.text,
     this.fontSize, {
     this.maxLines,

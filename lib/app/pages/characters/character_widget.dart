@@ -39,8 +39,8 @@ class Character extends StatelessWidget {
                     flex: 1,
                     child: Column(
                       children: [
-                        ShadowedTex(character["name"], 22),
-                        ShadowedTex("Status: ${character["status"]}", 16),
+                        ShadowedText(character["name"], 22),
+                        ShadowedText("Status: ${character["status"]}", 16),
                       ],
                     ),
                   ),
@@ -53,13 +53,13 @@ class Character extends StatelessWidget {
                 primary: false,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  ShadowedTex("Species: ${character["species"]}", 16),
+                  ShadowedText("Species: ${character["species"]}", 16),
                   SizedBox(height: 22),
-                  ShadowedTex("Gender: ${character["gender"]}", 16),
+                  ShadowedText("Gender: ${character["gender"]}", 16),
                   SizedBox(height: 22),
-                  ShadowedTex("Hair: ${character["hair"]}", 16),
+                  ShadowedText("Hair: ${character["hair"]}", 16),
                   SizedBox(height: 22),
-                  ShadowedTex("Origin: ${character["origin"]}", 16),
+                  ShadowedText("Origin: ${character["origin"]}", 16),
                   SizedBox(height: 22),
                   if (_propertyExists("abilities")) ...[
                     _buildPropertyList("abilities", "abilities"),
@@ -89,6 +89,6 @@ class Character extends StatelessWidget {
     var result = properties!
         .reduce((value, element) => "${value.trim()}, ${element.trim()}");
 
-    return ShadowedTex("$label: [$result]", 16);
+    return ShadowedText("$label: [$result]", 16);
   }
 }
