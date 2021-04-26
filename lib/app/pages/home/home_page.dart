@@ -64,7 +64,8 @@ class _HomePageState extends State<HomePage> {
                           text: "Quotes",
                           tag: "quotes-hero",
                           imageSide: _ImageSide.left,
-                          callback: () {},
+                          callback: () => Navigator.of(context)
+                              .pushNamed(RouteGenerator.quotes),
                         ),
                       ],
                     ),

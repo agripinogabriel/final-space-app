@@ -4,12 +4,14 @@ import 'pages/characters/characters_page.dart';
 import 'pages/episodes/episodes_page.dart';
 import 'pages/home/home_page.dart';
 import 'pages/locations/locations_page.dart';
+import 'pages/quotes/quotes_page.dart';
 
 class RouteGenerator {
   static const initialRoute = "/";
   static const characters = "/character";
   static const episodes = "/episodes";
   static const locations = "/locations";
+  static const quotes = "/quotes";
 
   static Map<String, Widget Function(BuildContext)> get routes {
     return {
@@ -17,6 +19,7 @@ class RouteGenerator {
       characters: (context) => CharactersPage(),
       episodes: (context) => EpisodesPage(),
       locations: (context) => LocationsPage(),
+      quotes: (context) => QuotesPage(),
     };
   }
 
@@ -26,6 +29,7 @@ class RouteGenerator {
       characters: (context) => CharactersPage(),
       episodes: (context) => EpisodesPage(),
       locations: (context) => LocationsPage(),
+      quotes: (context) => QuotesPage(),
     };
 
     WidgetBuilder? builder = _routes[settings.name];
