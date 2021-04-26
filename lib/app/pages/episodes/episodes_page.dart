@@ -130,13 +130,13 @@ class _EpisodesPageState extends State<EpisodesPage> {
   }
 
   InkWell _buildCharacterImage(id) {
-    var imageUrl = _getCharacterImageUrlById(id);
+    var imageUrl = getCharacterImageUrlById(id);
 
     return InkWell(
       onTap: () => showModalBottomSheet(
         context: context,
         builder: (_) => Character(
-          _getCharacter(id: id),
+          getCharacter(id: id),
         ),
       ),
       child: ClipRRect(
@@ -144,15 +144,5 @@ class _EpisodesPageState extends State<EpisodesPage> {
         child: NetworkImageWithProgress(url: imageUrl),
       ),
     );
-  }
-
-  Map<String, Object> _getCharacter({required int id}) {
-    final character = CHARACTERS.firstWhere((map) => map["id"] == id);
-    return character;
-  }
-
-  String _getCharacterImageUrlById(int id) {
-    final character = _getCharacter(id: id);
-    return character["img_url"] as String;
   }
 }

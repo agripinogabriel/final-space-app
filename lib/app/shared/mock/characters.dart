@@ -528,3 +528,13 @@ const CHARACTERS = [
         "https://finalspaceapi.com/api/character/avatar/zargon_tukalishi.jpg"
   }
 ];
+
+Map<String, Object> getCharacter({required int id}) {
+  final character = CHARACTERS.firstWhere((map) => map["id"] == id);
+  return character;
+}
+
+String getCharacterImageUrlById(int id) {
+  final character = getCharacter(id: id);
+  return character["img_url"] as String;
+}
