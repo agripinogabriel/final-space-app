@@ -52,27 +52,34 @@ class _QuotesPageState extends State<QuotesPage> {
               padding: const EdgeInsets.all(12),
               itemCount: quotesByCharacter.length,
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Container(
-                      color: secondaryLigthColor.withAlpha(40),
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        children: [
-                          _characterImage(
-                              quotesByCharacter.keys.elementAt(index)),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
+                return _buildListItem(index);
               },
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Padding _buildListItem(int index) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: Container(
+          color: secondaryLigthColor.withAlpha(40),
+          padding: const EdgeInsets.all(12.0),
+          child: _buildCharacterData(index),
+        ),
+      ),
+    );
+  }
+
+  Row _buildCharacterData(int index) {
+    return Row(
+      children: [
+        _characterImage(quotesByCharacter.keys.elementAt(index)),
+      ],
     );
   }
 
