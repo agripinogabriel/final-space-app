@@ -29,14 +29,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
       ),
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: new ExactAssetImage('assets/images/background.jpeg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          ContainerBackgroundImage(),
           ListView.builder(
             itemCount: EPISODES.length,
             itemBuilder: _buildListItem,

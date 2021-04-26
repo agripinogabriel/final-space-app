@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/mock/characters.dart';
+import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/shadowed_text.dart';
 import 'character_widget.dart';
 
@@ -25,14 +26,7 @@ class _CharactersPageState extends State<CharactersPage> {
       ),
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: new ExactAssetImage('assets/images/background.jpeg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          ContainerBackgroundImage(),
           ListView.builder(
             padding: const EdgeInsets.all(12),
             itemCount: CHARACTERS.length,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
+import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/shadowed_text.dart';
 
 class Character extends StatelessWidget {
@@ -10,13 +11,7 @@ class Character extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: new ExactAssetImage('assets/images/background.jpeg'),
-          fit: BoxFit.cover,
-        ),
-      ),
+    return ContainerBackgroundImage(
       child: Container(
         color: secondaryLigthColor.withAlpha(40),
         child: SafeArea(

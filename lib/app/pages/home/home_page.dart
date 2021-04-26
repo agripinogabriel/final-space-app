@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../route_generator.dart';
 import '../../shared/colors.dart';
+import '../../shared/widget/container_background_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,15 +19,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Stack(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:
-                          new ExactAssetImage('assets/images/background.jpeg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                ContainerBackgroundImage(),
                 SafeArea(
                   top: false,
                   child: SingleChildScrollView(
