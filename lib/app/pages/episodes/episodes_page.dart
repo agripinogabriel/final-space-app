@@ -30,10 +30,12 @@ class _EpisodesPageState extends State<EpisodesPage> {
       body: Stack(
         children: [
           ContainerBackgroundImage(),
-          ListView.builder(
-            itemCount: EPISODES.length,
-            itemBuilder: _buildListItem,
-            padding: const EdgeInsets.all(12),
+          SafeArea(
+            child: ListView.builder(
+              itemCount: EPISODES.length,
+              itemBuilder: _buildListItem,
+              padding: const EdgeInsets.all(12),
+            ),
           ),
         ],
       ),
