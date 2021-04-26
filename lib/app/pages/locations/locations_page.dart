@@ -51,19 +51,10 @@ class _LocationsPageState extends State<LocationsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildPlanetImage(episode),
+            NetworkImageWithProgress(url: episode["img_url"] as String),
           ],
         ),
       ),
     );
   }
-
-  Widget _buildPlanetImage(Map<String, Object> episode) {
-    return Stack(
-      children: [
-        NetworkImageWithProgress(url: episode["img_url"] as String),
-      ],
-    );
-  }
 }
-
