@@ -77,10 +77,13 @@ class _QuotesPageState extends State<QuotesPage> {
   }
 
   Row _buildCharacterData(int index) {
+    final characterId = quotesByCharacter.keys.elementAt(index);
+    final character = getCharacter(id: characterId);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _characterImage(quotesByCharacter.keys.elementAt(index)),
+        _characterImage(character["img_url"] as String),
         _buildCharacterQuotes(index),
       ],
     );
@@ -107,13 +110,11 @@ class _QuotesPageState extends State<QuotesPage> {
     );
   }
 
-  Widget _characterImage(int id) {
-    final character = getCharacter(id: id);
-
+  Widget _characterImage(String imageUrl) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(50)),
       child: NetworkImageWithProgress(
-        url: character["img_url"] as String,
+        url: imageUrl,
         height: 100,
       ),
     );
