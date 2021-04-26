@@ -76,31 +76,38 @@ class _QuotesPageState extends State<QuotesPage> {
     );
   }
 
-  Row _buildCharacterData(int index) {
+  Widget _buildCharacterData(int index) {
     final characterId = quotesByCharacter.keys.elementAt(index);
     final character = getCharacter(id: characterId);
 
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _characterImage(character["img_url"] as String),
-        _buildCharacterQuotes(index),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _characterImage(character["img_url"] as String),
+            SizedBox(width: 16),
+            Expanded(
+                child: ShadowedText(
+              character["name"] as String,
+              28,
+              textAlign: TextAlign.center,
+            )),
+            SizedBox(width: 16),
+          ],
+        ),
+        SizedBox(height: 16),
+        ..._buildCharacterQuotes(index),
       ],
     );
   }
 
-  Expanded _buildCharacterQuotes(int index) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...quotesByCharacter.values
-              .elementAt(index)
-              .map((e) => _buildQuotes(e))
-              .toList()
-        ],
-      ),
-    );
+  List<Widget> _buildCharacterQuotes(int index) {
+    return quotesByCharacter.values
+        .elementAt(index)
+        .map((e) => _buildQuotes(e))
+        .toList();
   }
 
   Padding _buildQuotes(String e) {
