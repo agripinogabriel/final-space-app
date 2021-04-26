@@ -55,7 +55,8 @@ class _HomePageState extends State<HomePage> {
                           image: "assets/images/gary.png",
                           text: "Locations",
                           tag: "locations-hero",
-                          callback: () {},
+                          callback: () => Navigator.of(context)
+                              .pushNamed(RouteGenerator.locations),
                         ),
                         SizedBox(height: 6),
                         _buildSectionwidget(
