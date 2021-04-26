@@ -4,6 +4,7 @@ import '../../shared/colors.dart';
 import '../../shared/mock/locations.dart';
 import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/network_image_with_progress.dart';
+import '../../shared/widget/shadowed_text.dart';
 
 class LocationsPage extends StatefulWidget {
   @override
@@ -49,9 +50,17 @@ class _LocationsPageState extends State<LocationsPage> {
         padding: const EdgeInsets.all(2.0),
         color: secondaryLigthColor.withAlpha(40),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             NetworkImageWithProgress(url: episode["img_url"] as String),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  ShadowedText(episode["name"] as String, 22),
+                  ShadowedText(episode["type"] as String, 16),
+                ],
+              ),
+            ),
           ],
         ),
       ),
