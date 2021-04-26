@@ -61,9 +61,26 @@ class _LocationsPageState extends State<LocationsPage> {
                 ],
               ),
             ),
+            _buildInhabitants(episode["inhabitants"] as List),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildInhabitants(List inhabitants) {
+    String result = "-";
+
+    if (inhabitants.length > 0) {
+      result = inhabitants
+          .reduce((value, element) => "${value.trim()}, ${element.trim()}");
+      result = "[$result]";
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      width: double.infinity,
+      child: ShadowedText("Inhabitants: $result", 16),
     );
   }
 }
