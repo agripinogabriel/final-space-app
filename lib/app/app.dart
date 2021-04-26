@@ -8,6 +8,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Final Space API',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: primaryColor,
         accentColor: accentColor,
