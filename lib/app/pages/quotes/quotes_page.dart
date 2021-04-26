@@ -5,6 +5,7 @@ import '../../shared/mock/characters.dart';
 import '../../shared/mock/quotes.dart';
 import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/network_image_with_progress.dart';
+import '../../shared/widget/shadowed_text.dart';
 
 class QuotesPage extends StatefulWidget {
   @override
@@ -77,9 +78,32 @@ class _QuotesPageState extends State<QuotesPage> {
 
   Row _buildCharacterData(int index) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _characterImage(quotesByCharacter.keys.elementAt(index)),
+        _buildCharacterQuotes(index),
       ],
+    );
+  }
+
+  Expanded _buildCharacterQuotes(int index) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ...quotesByCharacter.values
+              .elementAt(index)
+              .map((e) => _buildQuotes(e))
+              .toList()
+        ],
+      ),
+    );
+  }
+
+  Padding _buildQuotes(String e) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
+      child: ShadowedText(e, 16),
     );
   }
 
