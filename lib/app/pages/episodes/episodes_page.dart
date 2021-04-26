@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../shared/colors.dart';
 import '../../shared/mock/characters.dart';
 import '../../shared/mock/episodes.dart';
+import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/shadowed_text.dart';
 import '../characters/character_widget.dart';
 
@@ -20,8 +21,10 @@ class _EpisodesPageState extends State<EpisodesPage> {
         elevation: 4,
         title: Hero(
           tag: "episodes-hero",
-          child:
-              Text("Episodes", style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Text(
+            "Episodes",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       body: Stack(
@@ -53,9 +56,12 @@ class _EpisodesPageState extends State<EpisodesPage> {
         padding: const EdgeInsets.all(2.0),
         color: secondaryLigthColor.withAlpha(40),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildEpisodeFolder(episode),
-            _buildEpisodeStaff(episode),
+            _buildEpisodeStaff(
+                director: episode["director"] as String,
+                writer: episode["writer"] as String),
             _buildCharacters(episode["characters"] as List),
           ],
         ),
@@ -66,50 +72,26 @@ class _EpisodesPageState extends State<EpisodesPage> {
   Widget _buildEpisodeFolder(Map<String, Object> episode) {
     return Stack(
       children: [
-        _buildEpisodeFolderImage(episode["img_url"] as String),
-        _buildEpisodeName(episode),
-        _buildEpisodeDate(episode),
+        _buildImageWithLoad(episode["img_url"] as String),
+        _buildEpisodeName(episode["name"] as String),
+        _buildEpisodeDate(episode["air_date"] as String),
       ],
     );
   }
 
-  Widget _buildEpisodeFolderImage(String imgUrl) {
-    return Image.network(
-      imgUrl,
-      loadingBuilder: (BuildContext context, Widget widget,
-          ImageChunkEvent? imageChunckEvent) {
-        if (imageChunckEvent == null) return widget;
-        return SizedBox(
-          height: 250,
-          child: Center(
-            child: CircularProgressIndicator(
-              value: imageChunckEvent.expectedTotalBytes != null
-                  ? imageChunckEvent.cumulativeBytesLoaded /
-                      imageChunckEvent.expectedTotalBytes!
-                  : null,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildEpisodeDate(Map<String, Object> episode) {
+  Widget _buildEpisodeDate(String date) {
     return Positioned(
       top: 0,
       right: 0,
       child: Container(
         padding: const EdgeInsets.all(8.0),
         color: Colors.black87.withAlpha(120),
-        child: ShadowedText(
-          episode["air_date"] as String,
-          16,
-        ),
+        child: ShadowedText(date, 16),
       ),
     );
   }
 
-  Widget _buildEpisodeName(Map<String, Object> episode) {
+  Widget _buildEpisodeName(String name) {
     return Positioned(
       bottom: 0,
       left: 0,
@@ -117,51 +99,23 @@ class _EpisodesPageState extends State<EpisodesPage> {
       child: Container(
         padding: const EdgeInsets.all(8.0),
         color: Colors.black87.withAlpha(120),
-        child: ShadowedText(
-          episode["name"] as String,
-          22,
-          textAlign: TextAlign.center,
-        ),
+        child: ShadowedText(name, 22, textAlign: TextAlign.center),
       ),
     );
   }
 
-  Widget _buildEpisodeStaff(Map<String, Object> episode) {
+  Widget _buildEpisodeStaff(
+      {required String director, required String writer}) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  ShadowedText(
-                    "Director: ${episode["director"] as String}",
-                    16,
-                    textAlign: TextAlign.center,
-                  ),
-                  Spacer(),
-                ],
-              ),
-            ],
-          ),
+          child: ShadowedText("Director: $director", 16),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  ShadowedText(
-                    "Writer: ${episode["writer"] as String}",
-                    16,
-                    textAlign: TextAlign.center,
-                  ),
-                  Spacer(),
-                ],
-              ),
-            ],
-          ),
+          child: ShadowedText("Writer: $writer", 16),
         ),
       ],
     );
@@ -175,36 +129,43 @@ class _EpisodesPageState extends State<EpisodesPage> {
       crossAxisSpacing: 8,
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      children: characters
-          .map(
-            (id) => InkWell(
-              onTap: () => showModalBottomSheet(
-                context: context,
-                builder: (_) => Character(
-                  _getCharacter(id: id),
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                child: Image.network(
-                  _getCharacterImageUrlById(id),
-                  loadingBuilder: (BuildContext context, Widget widget,
-                      ImageChunkEvent? imageChunckEvent) {
-                    if (imageChunckEvent == null) return widget;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: imageChunckEvent.expectedTotalBytes != null
-                            ? imageChunckEvent.cumulativeBytesLoaded /
-                                imageChunckEvent.expectedTotalBytes!
-                            : null,
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          )
-          .toList(),
+      children: characters.map((id) => _buildCharacterImage(id)).toList(),
+    );
+  }
+
+  InkWell _buildCharacterImage(id) {
+    var imageUrl = _getCharacterImageUrlById(id);
+
+    return InkWell(
+      onTap: () => showModalBottomSheet(
+        context: context,
+        builder: (_) => Character(
+          _getCharacter(id: id),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        child: _buildImageWithLoad(imageUrl),
+      ),
+    );
+  }
+
+  Image _buildImageWithLoad(String url) {
+    return Image.network(
+      url,
+      loadingBuilder: (BuildContext context, Widget widget,
+          ImageChunkEvent? imageChunckEvent) {
+        if (imageChunckEvent == null) return widget;
+
+        return Center(
+          child: CircularProgressIndicator(
+            value: imageChunckEvent.expectedTotalBytes != null
+                ? imageChunckEvent.cumulativeBytesLoaded /
+                    imageChunckEvent.expectedTotalBytes!
+                : null,
+          ),
+        );
+      },
     );
   }
 
