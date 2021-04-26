@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
-import '../../shared/mock/characters.dart';
 import '../../shared/mock/episodes.dart';
+import '../../shared/widget/character_image_list.dart';
 import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/network_image_with_progress.dart';
 import '../../shared/widget/shadowed_text.dart';
-import '../characters/character_widget.dart';
 
 class EpisodesPage extends StatefulWidget {
   @override
@@ -58,7 +57,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
             _buildEpisodeStaff(
                 director: episode["director"] as String,
                 writer: episode["writer"] as String),
-            _buildCharacters(episode["characters"] as List),
+            CharacterImageList(characters: episode["characters"] as List),
           ],
         ),
       ),
@@ -114,35 +113,6 @@ class _EpisodesPageState extends State<EpisodesPage> {
           child: ShadowedText("Writer: $writer", 16),
         ),
       ],
-    );
-  }
-
-  Widget _buildCharacters(List characters) {
-    return GridView.count(
-      padding: const EdgeInsets.all(8),
-      crossAxisCount: 11,
-      mainAxisSpacing: 4,
-      crossAxisSpacing: 8,
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      children: characters.map((id) => _buildCharacterImage(id)).toList(),
-    );
-  }
-
-  InkWell _buildCharacterImage(id) {
-    var imageUrl = getCharacterImageUrlById(id);
-
-    return InkWell(
-      onTap: () => showModalBottomSheet(
-        context: context,
-        builder: (_) => Character(
-          getCharacter(id: id),
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-        child: NetworkImageWithProgress(url: imageUrl),
-      ),
     );
   }
 }

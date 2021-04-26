@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/mock/locations.dart';
+import '../../shared/widget/character_image_list.dart';
 import '../../shared/widget/container_background_image.dart';
 import '../../shared/widget/network_image_with_progress.dart';
 import '../../shared/widget/shadowed_text.dart';
@@ -62,6 +63,8 @@ class _LocationsPageState extends State<LocationsPage> {
               ),
             ),
             _buildInhabitants(episode["inhabitants"] as List),
+            CharacterImageList(
+                characters: episode["notable_residents"] as List),
           ],
         ),
       ),
@@ -84,3 +87,4 @@ class _LocationsPageState extends State<LocationsPage> {
     );
   }
 }
+
