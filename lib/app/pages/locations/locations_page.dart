@@ -1,6 +1,9 @@
-import 'package:final_space/app/shared/colors.dart';
-import 'package:final_space/app/shared/widget/container_background_image.dart';
 import 'package:flutter/material.dart';
+
+import '../../shared/colors.dart';
+import '../../shared/mock/locations.dart';
+import '../../shared/widget/container_background_image.dart';
+import '../../shared/widget/network_image_with_progress.dart';
 
 class LocationsPage extends StatefulWidget {
   @override
@@ -25,9 +28,42 @@ class _LocationsPageState extends State<LocationsPage> {
       body: Stack(
         children: [
           ContainerBackgroundImage(),
-          SafeArea(child: Container()),
+          SafeArea(
+            child: ListView.builder(
+              itemCount: LOCATIONS.length,
+              itemBuilder: _buildListItem,
+              padding: const EdgeInsets.all(12),
+            ),
+          ),
         ],
       ),
     );
   }
+
+  Widget _buildListItem(BuildContext context, int index) {
+    final episode = LOCATIONS[index];
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(2.0),
+        color: secondaryLigthColor.withAlpha(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildPlanetImage(episode),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPlanetImage(Map<String, Object> episode) {
+    return Stack(
+      children: [
+        NetworkImageWithProgress(url: episode["img_url"] as String),
+      ],
+    );
+  }
 }
+
