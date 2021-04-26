@@ -4,6 +4,7 @@ import '../../shared/colors.dart';
 import '../../shared/mock/characters.dart';
 import '../../shared/mock/episodes.dart';
 import '../../shared/widget/container_background_image.dart';
+import '../../shared/widget/network_image_with_progress.dart';
 import '../../shared/widget/shadowed_text.dart';
 import '../characters/character_widget.dart';
 
@@ -67,7 +68,7 @@ class _EpisodesPageState extends State<EpisodesPage> {
   Widget _buildEpisodeFolder(Map<String, Object> episode) {
     return Stack(
       children: [
-        _buildImageWithLoad(episode["img_url"] as String),
+        NetworkImageWithProgress(url: episode["img_url"] as String),
         _buildEpisodeName(episode["name"] as String),
         _buildEpisodeDate(episode["air_date"] as String),
       ],
@@ -140,27 +141,8 @@ class _EpisodesPageState extends State<EpisodesPage> {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(30)),
-        child: _buildImageWithLoad(imageUrl),
+        child: NetworkImageWithProgress(url: imageUrl),
       ),
-    );
-  }
-
-  Image _buildImageWithLoad(String url) {
-    return Image.network(
-      url,
-      loadingBuilder: (BuildContext context, Widget widget,
-          ImageChunkEvent? imageChunckEvent) {
-        if (imageChunckEvent == null) return widget;
-
-        return Center(
-          child: CircularProgressIndicator(
-            value: imageChunckEvent.expectedTotalBytes != null
-                ? imageChunckEvent.cumulativeBytesLoaded /
-                    imageChunckEvent.expectedTotalBytes!
-                : null,
-          ),
-        );
-      },
     );
   }
 
