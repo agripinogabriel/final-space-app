@@ -48,9 +48,42 @@ class _QuotesPageState extends State<QuotesPage> {
         children: [
           ContainerBackgroundImage(),
           SafeArea(
-            child: Container(),
+            child: ListView.builder(
+              padding: const EdgeInsets.all(12),
+              itemCount: quotesByCharacter.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Container(
+                      color: secondaryLigthColor.withAlpha(40),
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        children: [
+                          _characterImage(
+                              quotesByCharacter.keys.elementAt(index)),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _characterImage(int id) {
+    final character = getCharacter(id: id);
+
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(50)),
+      child: NetworkImageWithProgress(
+        url: character["img_url"] as String,
+        height: 100,
       ),
     );
   }
